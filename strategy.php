@@ -27,7 +27,7 @@ interface TravelType
     public function calculateCost($km);
 }
 
-class Car implements TravelType
+class CarTravel implements TravelType
 {
     private $strategy;
     
@@ -43,7 +43,7 @@ class Car implements TravelType
     }
 }
 
-class Boat implements TravelType
+class BoatTravel implements TravelType
 {
     private $strategy;
 
@@ -60,7 +60,7 @@ class Boat implements TravelType
 }
 
 
-$travelType = new Boat();
+$travelType = new BoatTravel();
 
 $distance = $_GET["distance"];
 
