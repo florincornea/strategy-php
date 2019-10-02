@@ -2,22 +2,28 @@
 
 interface TravelStrategy
 {
-    public function returnCostbyKm();
+    public function calculateCostbyKm($km);
 }
 
 class TravelByCarStrategy implements TravelStrategy
 {
-    public function returnCostbyKm()
+    public function calculateCostbyKm($km)
     {
-        return 2;
+        $costForOneKm = 2;
+        $travelCost = $km * $costForOneKm . " $";
+
+        return $travelCost;
     }
 }
 
 class TravelByBoatStrategy implements TravelStrategy
 {
-    public function returnCostbyKm()
+    public function calculateCostbyKm($km)
     {
-        return 8;
+        $costForOneKm = 8;
+        $travelCost = $km * $costForOneKm . " $";
+
+        return $travelCost;
     }
 }
 
@@ -38,8 +44,8 @@ class CarTravel implements TravelType
     
     public function calculateCost($km)
     {
-        $travelCost = $km * $this->strategy->returnCostbyKm() . "$";
-        echo "Travelling " . $km . "km by car will cost " . $travelCost;
+        $travelCost = $this->strategy->calculateCostbyKm($km);
+        echo "Travelling " . $km . " km by car will cost " . $travelCost;
     }
 }
 
@@ -54,14 +60,16 @@ class BoatTravel implements TravelType
 
     public function calculateCost($km)
     {
-        $travelCost = $km * $this->strategy->returnCostbyKm() . "$";
-        echo "Travelling " . $km . "km by boat will cost " . $travelCost;
+        $travelCost = $this->strategy->calculateCostbyKm($km);
+        echo "Travelling " . $km . " km by boat will cost " . $travelCost;
     }
 }
 
+function calculateCost($travelType, $distance) {
+    $travelType = new $travelType();
 
-$travelType = new BoatTravel();
+    return $travelType->calculateCost($distance);;
+}
 
 $distance = $_GET["distance"];
-
-$travelType->calculateCost($distance);
+calculateCost('CarTravel', $distance);
