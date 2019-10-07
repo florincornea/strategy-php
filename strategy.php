@@ -18,7 +18,7 @@ class TravelByCarStrategy implements TravelStrategy
 
     public function calculateGasbyKm($km)
     {
-        $gasForOneKm = 7.2/100;
+        $gasForOneKm = 7.2/100; // Car consumes 7.2l for 100km
         $travelCost = $km * $gasForOneKm . " l of Gas";
 
         return $travelCost;
@@ -37,7 +37,7 @@ class TravelByBoatStrategy implements TravelStrategy
 
     public function calculateGasbyKm($km)
     {
-        $gasForOneKm = 127/120;
+        $gasForOneKm = 127/120;  // Boat consumes 127l for 120km
         $travelCost = $km * $gasForOneKm . " l of Disel";
 
         return $travelCost;
