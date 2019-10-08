@@ -108,6 +108,6 @@ function estimateGasNeeds($travelType, $distance) {
 }
 
 $distance = $_GET["distance"];
-calculateCost('CarTravel', $distance);
+calculateCost('BoatTravel', $distance);
 echo '<br>';
-estimateGasNeeds('CarTravel', $distance);
+estimateGasNeeds('BoatTravel', $distance);
